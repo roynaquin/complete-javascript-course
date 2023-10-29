@@ -103,4 +103,73 @@ console.log(x, y);
 
 const averageAge = (ageJonas + ageSarah) / 2;
 console.log(ageJonas, ageSarah, averageAge);
+
+//Strings & Template Literals
+const firstName = "Jonas";
+const job = "teacher";
+const birthYear = 1991;
+const year = 2023;
+
+const jonas =
+  "I'm " + firstName + ", a " + (year - birthYear) + " year old " + job + ".";
+console.log(jonas);
+
+//temperate literal string uses `` to avoid concantenate which is easier and allows you to wrie multi line strings
+const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
+console.log(jonasNew);
+
+console.log(`Just a regular string..`);
+
+console.log(
+  "String with \n\
+multiple \n\
+lines"
+);
+
+console.log(`String
+multiple
+lines`);
+
+//Decisions
+//Program that checks if someone can take license exame
+const age = 17;
+const isOldEnough = age >= 18;
+// If Else Control Structure
+if (isOldEnough) {
+  console.log("Sarah can start driving license 😎.");
+} else {
+  const yearsLeft = 18 - age;
+  console.log(
+    `Sarah isn't old enough. She should try again in ${yearsLeft} year(s).`
+  );
+}
+
+const birthYear = 2012;
+
+let century;
+if (birthYear <= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
+console.log(century);
+
+//Challenge #2 Code
+const massMark = 78;
+const heightMark = 1.69;
+const massJohn = 92;
+const heightJohn = 1.95;
+
+const BMIMark = massMark / (heightMark * heightMark);
+const BMIJohn = massJohn / (heightJohn * heightJohn);
+console.log(BMIMark, BMIJohn);
+
+const markHigher = `Mark's BMI ${BMIMark} is higher than John's ${BMIJohn}!`;
+const johnHigher = `John's BMI ${BMIJohn} is higher than Mark's ${BMIMark}!`;
+
+if (BMIMark > BMIJohn) {
+  console.log (markHigher);
+} else {
+  console.log (johnHigher);
+}
 */
