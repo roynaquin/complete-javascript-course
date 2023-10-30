@@ -268,4 +268,71 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 } else {
   console.log('Someone else should drive.');
 }
+
+
+//Coding challenge 3
+const scoreDolphins = (96 + 108 + 89) / 3;
+const scoreKoalas = (88 + 91 + 110) / 3;
+console.log(scoreDolphins);
+console.log(scoreKoalas);
+
+if (scoreDolphins > scoreKoalas) {
+  console.log('Dolphins win the trophy');
+} else if (scoreKoalas > scoreDolphins) {
+  console.log('Koalas win the tropy');
+} else if (scoreDolphins === scoreKoalas) {
+  console.log('Both win the trophy');
+}
 */
+//The Switch Statement
+/*const day = 'friday';
+
+ switch (day) {
+  case 'monday': // day === 'monday'
+    console.log('Plan course structure');
+    console.log('Go to coding meetup');
+    break; // needed to stop the cycle
+  case 'tuesday':
+    console.log('Prepare theory videos');
+    break;
+  case 'wednesday':
+  case 'thursday':
+    console.log('Write code examples');
+    break;
+  case 'friday':
+    console.log('Record videos');
+    break;
+  case 'saturday':
+  case 'sunday':
+    console.log('Enjoy the weekend.');
+    break;
+  default:
+    console.log('Not a valid day!');
+}
+
+//Switch Example using else if 
+const day = 'friday';
+if (day === 'monday') {
+  console.log('Plan course structure');
+  console.log('Go to coding meetup');
+} else if (day === 'tuesday') {
+  console.log('Prepare theory videos');
+} else if (day === 'wednesday' || day === 'thursday') {
+  console.log('Write code examples');
+} else if (day === 'friday') {
+  console.log('Record videos');
+} else if (day === 'saturday' || day === 'sunday') {
+  console.log('Enjoy the weekend');
+} else {
+  console.log('Not a valid day');
+}
+*/
+
+//Statements are like full sentences & Expressions produce values
+if (23 > 10) {
+  //expression
+  const str = '23 is bigger'; //statement
+}
+
+const me = 'Jonas';
+console.log(`I'm ${2037 - 1991} years old ${me}.`);
