@@ -326,7 +326,7 @@ if (day === 'monday') {
 } else {
   console.log('Not a valid day');
 }
-*/
+
 
 //Statements are like full sentences & Expressions produce values
 if (23 > 10) {
@@ -336,3 +336,36 @@ if (23 > 10) {
 
 const me = 'Jonas';
 console.log(`I'm ${2037 - 1991} years old ${me}.`);
+
+
+//Conditional Operators
+const age = 23;
+age >= 18
+  ? console.log('i like to drink wine.')
+  : console.log('I like to drink water');
+
+//Ternary Operator Example
+const drink = age >= 18 ? 'wine 🍷' : 'water 💧';
+console.log(drink); // Much easier to write than if / else
+
+let drink2;
+if (age >= 18) {
+  drink2 = 'wine';
+} else {
+  drink2 = 'water';
+}
+console.log(drink2);
+
+console.log(`I like to drink ${drink}.`);
+
+//Challenge 4
+const bill = 10;
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value was ${
+    bill + tip
+  }`
+);
+*/
+// Javascript Releases ES5, ES6+ and ESNext
