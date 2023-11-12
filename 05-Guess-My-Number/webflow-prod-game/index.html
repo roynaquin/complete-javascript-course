@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Guess My Number!</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: inherit;
+        font-family: sans-serif;
+      }
+
+      html {
+        font-size: 85%;
+        box-sizing: border-box;
+      }
+
+      body {
+        color: #f5f5f5;
+        background-color: #09080a;
+        font-family: ilisarniq sans-serif;
+        /* background-color: #60b347; */
+      }
+
+      /* LAYOUT */
+      header {
+        position: relative;
+        height: 50vh;
+        border-bottom: 5px solid #f5f5f5;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #f5f5f5;
+      }
+
+      main {
+        height: 65vh;
+        color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .game-left {
+        width: 52rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20%;
+      }
+
+      .game-right {
+        width: 52rem;
+        font-size: 3rem;
+        letter-spacing: 1px;
+        margin-left: 20%;
+      }
+
+      /* ELEMENTS STYLE */
+      .game-h1 {
+        font-size: 4rem;
+        letter-spacing: 1px;
+        line-height: 105%;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        top: 52%;
+        left: 50%;
+        transform: translate(-50%, -70%);
+      }
+
+      .number {
+        background: #f5f5f5;
+        color: #131313;
+        font-size: 6rem;
+        width: 15rem;
+        padding: 3rem 0rem;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+      }
+
+      .between {
+        font-size: 1.4rem;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+      }
+
+      .again {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+      }
+
+      .guess {
+        background: none;
+        border: 4px solid #f5f5f5;
+        font-family: roboto;
+        color: inherit;
+        font-size: 4rem;
+        padding: 2rem;
+        width: 20rem;
+        text-align: center;
+        display: block;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+      }
+
+      .btn-game {
+        border: none;
+        background-color: #f5f5f5;
+        font-size: 1.5rem;
+        padding: 1.5rem 2.25rem;
+        color: #131313;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .btn-game:hover {
+        background-color: #ccc;
+      }
+
+      .message {
+        margin-bottom: 4rem;
+        height: 3rem;
+      }
+
+      .label-score {
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class ="game-h1 white"> Guess The Secret <br/>Number 🤫</h1>
+      <h4 class="between white"> Guess Between 1 and 20</h4>
+      <button class="btn-game again">Play Again 😁</button>
+      <div class="number">?</div>
+    </header>
+    <main>
+      <section class="game-left">
+        <input type="number" class="guess" />
+        <button class="btn-game check">Enter</button>
+      </section>
+      <section class="game-right">
+        <H4 class="white message">Start guessing...🤔</H4>
+        <H4 class=" white label-score">💯 Score: <span class="score">20</span></H4>
+        <H4 class="white label-highscore">
+          🥇 Highscore: <span class="white highscore">0</span>
+        </H4>
+      </section>
+    </main>
+    <script>
+      //Variables
+      let secretNumber = Math.trunc(Math.random() * 20) + 1;
+      let score = 20;
+      let highScore = 0;
+
+      // Display Message Function
+      const displayMessage = function (message) {
+        document.querySelector('.message').textContent = message;
+      };
+      const displayScore = function (score) {
+        document.querySelector('.score').textContent = score;
+      };
+
+      document.querySelector('.check').addEventListener('click', function () {
+        const guess = Number(document.querySelector('.guess').value);
+        console.log(guess, typeof guess);
+
+        // When there is no number entered
+        if (!guess) {
+          displayMessage('No number ⛔️');
+
+          // When the player wins
+        } else if (guess === secretNumber) {
+          displayMessage('😎 Correct Number️');
+          document.querySelector('.number').textContent = secretNumber;
+
+          //Change the style using CSS.
+          document.querySelector('body').style.backgroundColor = '#3BA476';
+          document.querySelector('.number').style.width = '30REM';
+
+          //Set HighScore
+          if (score > highScore) {
+            highScore = score;
+            document.querySelector('.highscore').textContent = highScore;
+          }
+
+          // When the guess is not secretNumber
+        } else if (guess !== secretNumber) {
+          if (score > 1) {
+            displayMessage(
+              guess > secretNumber ? '🥵 Too High️' : '🥶 too low️'
+            );
+            score--;
+            document.querySelector('.score').textContent = score;
+          } else {
+            displayMessage('🤯 You Lost The Game!');
+            document.querySelector('body').style.backgroundColor = '#ec4d1f';
+            displayScore(0);
+          }
+        }
+      });
+
+      document.querySelector('.again').addEventListener('click', function () {
+        //reset score and secret number
+        score = 10;
+        secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+        //Change content
+        displayMessage('Start guessing');
+        displayScore(score);
+        document.querySelector('.number').textContent = '?';
+        document.querySelector('.guess').value = ' ';
+
+        //Style CSS
+        document.querySelector('body').style.backgroundColor = '#131313';
+        document.querySelector('.number').style.width = '15REM';
+      });
+    </script>
+  </body>
+</html
